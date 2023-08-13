@@ -2,7 +2,7 @@
 import * as H from './home.ts'
 import * as GS from '../../globalStyle.ts'
 import Layout from '../../layout/layout.tsx'
-import Insert from './components/Insert.tsx'
+import Insert from './components/insert.tsx'
 import Posts from '../../components/posts/posts.tsx'
 //Image
 import avatar from '/surema.jpg'

@@ -2,11 +2,15 @@ import styled from 'styled-components'
 
 
 interface Props {
-  modalVisible: boolean,
-  open: boolean,
   add: boolean
 }
+interface Open{
+open: boolean
+}
 
+interface modal {
+modalVisible: boolean
+}
 
 export const home_container = styled.main`
   width: 100%;
@@ -14,7 +18,7 @@ export const home_container = styled.main`
   display: grid;
   gap: 15px;
 `
-export const home_modal_container= styled.div<Props>`
+export const home_modal_container= styled.div<modal>`
   width: 100%;
   min-height: 100vh;
   background-color: rgba(0,0,0,0.85);
@@ -113,7 +117,7 @@ export const modal_insert_textarea = styled.textarea`
   resize: none; /* Impede o redimensionamento */
   overflow: auto;
 `
-export const modal_insert_button = styled.button<Props>`
+export const modal_insert_button = styled.button<Open>`
   width: 100%;
   height: 55px;
   background-color: #fff;
