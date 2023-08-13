@@ -4,7 +4,7 @@ import Chat from './page/chat/chat.tsx';
 import PostSaved from './page/postSaved/postSaved.tsx';
 import Notification from './page/notification/notification.tsx';
 import Profile from './page/profile/profile.tsx';
-import { StyledGlobal } from "./GlobalStyle";
+import { StyledGlobal } from "./GlobalStyle.ts";
 
 
 
