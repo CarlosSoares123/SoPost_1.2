@@ -25,13 +25,13 @@ const Home: React.FC = () => {
     console.log("Publicar")
   }
   // Abrir o input file
-  const add_img = (e) => {
+  const add_img = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     setAddImg(true)
     setOpenAdd(false)
   }
   //Fechar o input
-  const close_add_img = (e) => {
+  const close_add_img = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     setAddImg(false)
     setOpenAdd(true)
