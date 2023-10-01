@@ -11,7 +11,7 @@ export const StyledGlobal = createGlobalStyle`
 :root{
   --color-text: #454545;
   --color-text-2: #acacac;
-  --color-bg: #55a4f31c;
+  --color-bg: #5893cf7a;
   --color-base: #3280fd;
 }
 
@@ -30,7 +30,9 @@ li{
   list-style: none;
 }
 
-button{
+input, button{
+  border: none;
+  outline: none;
   cursor: pointer;
 }
 

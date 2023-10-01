@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const posts_container = styled.section`
+export const PostContainer = styled.section`
   width: 100%;
   height: auto;
   background-color: #fff;
@@ -54,11 +54,12 @@ export const posts_container = styled.section`
     }
 }
 `
-export const posts_user = styled.div`
+export const PostUser = styled.div`
   width: 100%;
   display: flex;
   gap: 15px;
   align-items: center;
+  
 
   .text_user{
     display: grid;
@@ -74,11 +75,11 @@ export const posts_user = styled.div`
     }
   }
 `
-export const posts_text = styled.div`
+export const PostText = styled.div`
   width: 100%;
   height: fit-content;
 `
-export const posts_image = styled.figure`
+export const PostImage = styled.figure`
   width: 100%;
   height: 350px;
   
@@ -89,22 +90,31 @@ export const posts_image = styled.figure`
     border-radius: 10px;
   }
 `
-export const posts_react = styled.div`
+export const PostReact = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  gap: 35px;
+  gap: 10px;
   align-items: center;
   font-size: 23px;
 
-
-  div{
+  i{
+    padding: 3px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #000;
     display: flex;
-    gap: 5px;
+    gap: 15px;
     align-items: center;
+    transition: all.4s ease;
+    font-size: 18px;
+
+    &:hover{
+      color: var(--color-text);
+    }
   }
 `
-export const posts_comment = styled.div`
+export const PostComment = styled.div`
   width: 100%;
   display: flex;
   gap: 10px;
@@ -128,6 +138,6 @@ export const posts_comment = styled.div`
     box-shadow: 0px 0px 3px 1px var(--color-base);
   }
   
-  }
+}
 
 `

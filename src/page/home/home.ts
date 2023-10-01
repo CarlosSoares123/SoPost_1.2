@@ -79,7 +79,7 @@ export const modal_insert_user = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-
+  
   .text{
     display:grid;
     .name{

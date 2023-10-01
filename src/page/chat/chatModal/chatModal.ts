@@ -21,11 +21,19 @@ export const chatModal_message = styled.div`
   height: 100%;
   display: grid;
   gap: 10px;
+  
 `
 export const chatModal_friend =styled.div`
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 15px;
+  cursor: pointer;
+
+  padding: 5px 0px;
+  color: var(--cor);
+  font-size: 22px;
+  transition: .4s;
+  
 
   .name{
     font-weight:bold;
@@ -34,4 +42,17 @@ export const chatModal_friend =styled.div`
     font-size:14px;
     color: var(--color-text-2);
   }
+
+  &:hover{
+  background: linear-gradient(90deg,#0ea5ea, #0bd1d1);;
+  margin-inline: -35px;
+  padding-inline: 25px;
+  color: white;
+  border-radius: 5px;
+
+  .message{
+    color: var(--color-text);
+  }
+  }
+
 `

@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 
+export const container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 20px;
+`
+
 export const profile = styled.div`
   width: 100%;
   height: 400px;
@@ -7,13 +14,17 @@ export const profile = styled.div`
   border-radius: 10px;
   box-shadow: 0px 2px 6px 0px var(--color-text);
   overflow: hidden;
-  
 `
 
 export const profile_bg = styled.figure`
   width: 100%;
   height: 200px;
-  background: green;
+
+  background-image: url('/bg-fundo.jpg');
+  background-size: cover; /* Ajusta o tamanho da imagem para cobrir o elemento */
+  background-position: center center; /* Centraliza a imagem no elemento */
+  background-repeat: no-repeat; /* Evita repetições da imagem */
+
 `
 
 export const profile_container = styled.div`
@@ -86,4 +97,11 @@ export const profile_menu = styled.div`
       color: var(--color-base);
     }
   }
+`
+
+export const container_menu = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+
 `

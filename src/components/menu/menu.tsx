@@ -1,7 +1,7 @@
 import * as M from './menu'
 import * as GS from '../../globalStyle'
 import avatar from '/surema.jpg'
-import { MdOtherHouses, MdForum, MdTurnedInNot, MdNotificationsNone, MdOutlineLogout } from "react-icons/md";
+import { MdOtherHouses, MdForum, MdNotificationsNone, MdOutlineLogout } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 
@@ -27,7 +27,6 @@ const Menu = () => {
           <ul>
             <Link to="/" className='link'><MdOtherHouses/> <li>Home</li> </Link>
             <Link to="/chat" className='link'><MdForum/><li >Chat</li></Link>
-            <Link to="/posts_salvados" className='link'><MdTurnedInNot/><li>Post Salvos</li></Link>
             <Link to="/notification" className='link'><MdNotificationsNone/><li>Notificação</li></Link>
             <Link to="#" className='link'><MdOutlineLogout/><li>Logout</li></Link>
           </ul>

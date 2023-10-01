@@ -4,10 +4,13 @@ import * as GS from '../../globalStyle.ts'
 // Image
 import avatar from '/surema.jpg'
 //Icons
-import { MdOutlineFavoriteBorder, MdInsertComment, MdTurnedInNot, MdClear, MdOutlineFavorite, MdOutlineMoreHoriz } from "react-icons/md";
+import { MdInsertComment, MdTurnedInNot, MdClear, MdOutlineFavorite, MdOutlineMoreHoriz } from "react-icons/md";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 import {Link} from 'react-router-dom'
+import { useState } from 'react';
 
+// Tipagem para as props que serao enviadas
 interface Props {
   name: string,
   hours: string,
@@ -16,21 +19,33 @@ interface Props {
   text: string
 }
 
+
 const Posts: React.FC<Props> = ({name, hours, src, user_img, text}) => {
   
+  const [isLiked, setIsLiked] = useState(false)
+  
+
+  // Funcao QUE COLOCA COR E TIRA 
+  const handleLike = () => {
+    setIsLiked(!isLiked)
+  }
+
   
   return (
-    <P.posts_container>
+    <P.PostContainer>
       
-      <MdOutlineMoreHoriz className='icon'/>
+      {/* Tres pontos */}
+      <MdOutlineMoreHoriz className='icon' />
 
+      {/* Mini menu para os usuarios que clicarem no tres pontos */}
       <div className='plus'>
         <i><MdTurnedInNot className='icon_plus'/> <span>Save Post</span></i>
         <i><MdClear className='icon_plus'/> <span>Ocult Post</span></i>
         <i><MdOutlineFavorite className='icon_plus'/> <span>Delete Post</span></i>
       </div>
 
-      <P.posts_user>
+      {/* header aonde fica a informacao basica do usuario que fez o post */}
+      <P.PostUser>
 
       <GS.figureImg>
         <img src={user_img} alt='Imagem do avatar' />
@@ -41,31 +56,43 @@ const Posts: React.FC<Props> = ({name, hours, src, user_img, text}) => {
         <span className='time'>{hours}</span>
       </div>
 
-      </P.posts_user>
+      </P.PostUser>
 
-      <P.posts_text>
+      {/* Texto do Post */}
+      <P.PostText>
         <p>{text}</p>
-      </P.posts_text>
+      </P.PostText>
 
-      <P.posts_image>
+      {/* Imagem do Post */}
+      <P.PostImage>
         <img src={src} alt='Image post' />
-      </P.posts_image>
+      </P.PostImage>
 
-      <P.posts_react>
-        <div><MdOutlineFavoriteBorder/> <span>12</span> </div>
-        <div><MdInsertComment/> <span>2</span></div>
-      </P.posts_react>
+      
+      <P.PostReact>
 
-      <P.posts_comment>
+        <i onClick={handleLike}>
+          { isLiked ? <FaHeart style={{color: 'red'}}/> : <FaRegHeart/>}
+          <span>Gostei</span>
+        </i>
+
+        <i onClick={() => {console.log('Clicado com sucesso')}}>
+          <MdInsertComment/>
+          <span>Comentar</span>
+        </i>
+        
+      </P.PostReact>
+
+      <P.PostComment>
         <GS.figureImg>
           <img src={avatar} alt="Image User"/>
         </GS.figureImg>
 
         <textarea placeholder='Deixe o seu comentario ...'>
         </textarea>
-      </P.posts_comment>
+      </P.PostComment>
 
-    </P.posts_container>
+    </P.PostContainer>
   )
 }
 

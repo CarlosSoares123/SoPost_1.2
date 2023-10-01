@@ -21,7 +21,9 @@ const Home: React.FC = () => {
   const [openAdd, setOpenAdd] = useState(true)
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const post = () => {
+  // Testando o butao enviar Post
+  const handleSubmit = (e) => {
+    e.preventDefault()
     console.log("Publicar")
   }
   // Abrir o input file
@@ -49,7 +51,7 @@ const Home: React.FC = () => {
     setSelectedImage(null)
   }
   
-  // testando
+  // Pegando a imagem do usuario
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   const file = event.target.files?.[0];
   if (file) {
@@ -65,7 +67,10 @@ const Home: React.FC = () => {
     <>
     <Layout>
       <H.home_container>
+
         <Insert modal={open}/>
+        
+        {/* Primeiro Post  */}
         <Posts 
         name='Carlos Soares' 
         hours='2 hours Ago' 
@@ -73,6 +78,8 @@ const Home: React.FC = () => {
         user_img={avatar} 
         text='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem ea enim dolor fugit, asperiores quam ut vero facere sed excepturi veniam quas fugiat, delectus incidunt eaque ratione dolore provident debitis.'
         />
+
+         {/* Segundo Post */}
         <Posts 
         name='Laudia Pedro' 
         hours='1 min Ago' 
@@ -80,17 +87,21 @@ const Home: React.FC = () => {
         user_img={avatar_2}
         text='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem ea enim dolor fugit, asperiores quam ut vero facere sed excepturi veniam quas fugiat, delectus incidunt eaque ratione dolore provident debitis.'
         />
+
       </H.home_container>
     </Layout>
 
-    {/* Modal Insert */}
+    // Modal Insert Post
     <H.home_modal_container modalVisible={visible}>
+      
       <H.modal_insert>
+         {/* Cabecalho do header */}
         <H.modal_insert_header>
           <h1>Criar Publicacao</h1>
           <MdClear className='icon_close' onClick={close}/>
         </H.modal_insert_header>
 
+        {/* Informacao do usuario */}
         <H.modal_insert_user>
           
           <GS.figureImg>
@@ -104,7 +115,9 @@ const Home: React.FC = () => {
 
         </H.modal_insert_user>
 
-        <H.modal_insert_form>
+        {/* Fomrulario Geral */}
+        <H.modal_insert_form onSubmit={handleSubmit}>
+
         <H.modal_insert_textarea placeholder="Em que estas a pensar, Carlos Soares"/>
         
         <H.modal_insert_button onClick={add_img} open={openAdd}>
@@ -128,13 +141,13 @@ const Home: React.FC = () => {
 
         </H.modal_insert_add>
 
-        <button type='submit' className="submit" onClick={post}>Publicar</button>
+        <button className="submit">Publicar</button>
 
         </H.modal_insert_form>
 
       </H.modal_insert>
+      
     </H.home_modal_container>
-
     </>
   )
 }

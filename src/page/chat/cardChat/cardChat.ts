@@ -40,7 +40,8 @@ export const chat_container_message = styled.div`
   height: 410px;
   margin-block: 20px;
   overflow: scroll;
-  scrollbar-width: 2px;
+  overflow-x: hidden; /* Esconde a barra de rolagem horizontal */
+  overflow-y: scroll; /* Mostra a barra de rolagem vertical */
 `
 export const message = styled.div<Props>`
   width: 30vw;
@@ -50,6 +51,7 @@ export const message = styled.div<Props>`
   margin-bottom: 15px;
   border-radius: 15px;
   background: ${({send}) => (send ? 'linear-gradient(90deg,#0ea5ea, #0bd1d1, #fff)' : 'linear-gradient(90deg, aqua, #fff)')};
+
 `
 export const chat_send = styled.div`
   width: 100%;

@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from './page/home/home.tsx';
 import Chat from './page/chat/chat.tsx';
-import PostSaved from './page/postSaved/postSaved.tsx';
 import Notification from './page/notification/notification.tsx';
 import Profile from './page/profile/profile.tsx';
+import Login from './page/login/login.tsx'
+import Register from './page/register/register.tsx'
 import { StyledGlobal } from "./globalStyle.ts";
 
 
@@ -15,10 +16,11 @@ function App() {
     <StyledGlobal/>
     <Router>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<Login/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
+        <Route path="/home" element={<Home/>}></Route>
         <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/chat" element={<Chat/>}></Route>
-        <Route path="/posts_salvados" element={<PostSaved/>}></Route>
         <Route path="/notification" element={<Notification/>}></Route>
       </Routes>
     </Router>

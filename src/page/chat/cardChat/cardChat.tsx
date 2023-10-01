@@ -45,6 +45,180 @@ const CardChat = () => {
             Lorem ipsum dolor sit amet ?
           </div>
         </CH.message>
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
+
+        <CH.message send={false}>
+          <div className="">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, hic?
+          </div>
+        </CH.message>
+
+        <CH.message send={true}>
+          <div className="">
+            Lorem ipsum dolor sit amet ?
+          </div>
+        </CH.message>
         
       </CH.chat_container_message>
 

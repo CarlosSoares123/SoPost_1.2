@@ -2,14 +2,19 @@ import Layout from "../../layout/layout.tsx"
 import * as P from './profile.ts'
 import surema from '/surema.jpg'
 
+import Posts from '../../components/posts/posts.tsx'
+import avatar from '/avatar.jpg'
+import img_1 from '/01.jpeg'
+
+
 const Profile = () => {
   return (
     <Layout>
+      <P.container>
+
       <P.profile>
-        
-        <P.profile_bg>
-          
-        </P.profile_bg>
+
+        <P.profile_bg/>
 
         
         <P.profile_container>
@@ -22,8 +27,8 @@ const Profile = () => {
             </figure>
 
             <div className="user_info">
-              <span className="name">Carlos Soares</span>
-              <span className="email">carlossoares20@gmail.com</span>
+              <span className="name">Surema Amado</span>
+              <span className="email">suremaAmado20@gmail.com</span>
             </div>
           </P.profile_user>
 
@@ -38,9 +43,20 @@ const Profile = () => {
 
         </P.profile_container>
         
-
-
       </P.profile>
+
+        <P.container_menu>
+        <Posts 
+        name='Carlos Soares' 
+        hours='2 hours Ago' 
+        src={img_1} 
+        user_img={avatar} 
+        text='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem ea enim dolor fugit, asperiores quam ut vero facere sed excepturi veniam quas fugiat, delectus incidunt eaque ratione dolore provident debitis.'
+        />
+        </P.container_menu>
+
+      </P.container>
+
     </Layout>
   )
 }
