@@ -56,11 +56,16 @@ const Login: React.FC  = () => {
 
     <L.LoginContent>
 
+    <L.Text>
+      <h1>Olá de volta!</h1>
+      <p> Por favor, faça login para continuar.</p>
+    </L.Text>
+
     <L.Header>
       <img src={Avatar} alt="" />
     </L.Header>
 
-      <L.LoginForm  onSubmit={handleSubmit}>
+    <L.LoginForm  onSubmit={handleSubmit}>
       
       <L.InputContainer isVisible={inputEmail}>
         <L.Label htmlFor="email">Email: </L.Label>
@@ -87,8 +92,8 @@ const Login: React.FC  = () => {
       <L.Button isVisible={next} onClick={visibleButtonLogin}>NEXT</L.Button>
       <L.Button type='submit' isVisible={login}>LOGIN</L.Button>
       
-      <p>You are agree to aour terms and policies</p>
-      <Link to ='/registar'>Fazer cadastro</Link>
+      <p>Não és um Membro ? <Link to ='/registar'>Cadastrar</Link></p>
+      
     </L.LoginForm>
 
     </L.LoginContent>
