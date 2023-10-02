@@ -28,7 +28,7 @@ export const Text = styled.div`
   }
 `
 
-export const Header = styled.label`
+export const Header = styled.div`
   width: 150px;
   height: 150px;
   cursor: pointer;
@@ -44,17 +44,21 @@ export const Header = styled.label`
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    
     clip-path: circle();
   }
 `
 export const RegisterForm = styled.form`
-  width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  `
+  
+`
+export const InputsName = styled.div`
+  display: flex;
+  gap: 15px;
+`
 export const InputContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -62,9 +66,7 @@ export const InputContainer = styled.div`
   flex-direction: column;
   gap: 5px;
 `
-export const Label = styled.label`
-  font-weight: 600;
-`
+
 export const Input = styled.input`
   background-color: whitesmoke;
   padding: 10px;
