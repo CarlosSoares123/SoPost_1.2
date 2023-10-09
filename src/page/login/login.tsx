@@ -1,105 +1,117 @@
-import { Link } from 'react-router-dom'
-import * as L from './login.ts'
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import * as L from './login.ts';
+import Avatar from '/login/avatar.svg';
+import { useState } from 'react';
 
-import Avatar from '/login/avatar.svg'
+const Login: React.FC = () => {
 
-//Hooks
-import { useState } from 'react'
-
-const Login: React.FC  = () => {
-
-  const [inputEmail, setInputEmail] = useState(true)
-  const [inputPassword, setInputPassword] = useState(false)
-  const [next, setNext] = useState(true)
-  const [login, setLogin] = useState(false)
-  //  Estado para armazenar email e mensagem de erro
-  const [email, setEmail] = useState('')
+  const [inputEmail, setInputEmail] = useState(true);
+  const [inputPassword, setInputPassword] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
-  // Estado para armazenar a Senha
-  const [senha, setSenha] = useState('')
+  const [password, setPassword] = useState('');
+  const [emailSent, setEmailSent] = useState(false); // Novo estado
 
-  // Função que envia os dados ao backend
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log(senha)
-    console.log("Clicado e redirecionado ao Home")
-  }
+    const navigate = useNavigate('/')
 
-  const visibleButtonLogin = (e: React.FormEvent) => {
-    e.preventDefault()
-
-     // Lógica para validar o e-mail
-    if (!validateEmail(email)) {
-      console.log("Este Email: ("+email+")não é valido")
-      console.log("Por favor Insira um email valido")
-      setEmailError('Digite um e-mail válido.');
-      return;
-    } else {
-      setInputEmail(false)
-      setInputPassword(true)
-      setNext(false)
-      setLogin(true)
-      console.log(email)
-    }
-       // Logica de buscar a Imagem no backend e substituir antes do Input Password
-        
-       // Logica para poder permitir o acesso do usuario a pagina home
-    }
-    // Funcao que valida se o email e valido ou nao
   const validateEmail = (input: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(input);
-  }
+  };
 
-  return(
-  <L.LoginContainer>
+  const visibleButtonLogin = () => {
 
-    <L.LoginContent>
+      if (!validateEmail(email)) {
+        setEmailError('Digite um e-mail válido.');
+        return;
+      }
+      // Enviar o e-mail para o backend
+      axios.post('http://localhost:9000/validate_email/', { email })
+      .then(((res) => {
+        console.log(res.data)
 
-    <L.Text>
-      <h1>Olá de volta!</h1>
-      <p> Por favor, faça login para continuar.</p>
-    </L.Text>
+        setEmailSent(true);
+        setInputEmail(false);
+        setInputPassword(true);
+        setLogin(true);
+      }))
+      .catch((err) => {
+        console.log(err.response.data)
+      })
+  };
 
-    <L.Header>
-      <img src={Avatar} alt="" />
-    </L.Header>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Definir o estado para indicar que o e-mail foi enviado
+    setEmailSent(true);
+    
+    axios.post('http://localhost:9000/validate_password/', {password, email})
+    .then((res)=> {
+      console.log(res)
+      navigate('/home')
+    })
+    .catch((err) => {
+      console.log(err.response)
+    })
+    
+  };
 
-    <L.LoginForm  onSubmit={handleSubmit}>
-      
-      <L.InputContainer isVisible={inputEmail}>
-        <L.Label htmlFor="email">Email: </L.Label>
-        <L.Input type="email" 
-        placeholder='Digite o Email' 
-        autoComplete='off'
-        name='email'
-        onChange={(e) => {
+  return (
+    <L.LoginContainer>
+      <L.LoginContent>
+        <L.Text>
+          <h1>Olá de volta!</h1>
+          <p>Por favor, faça login para continuar.</p>
+        </L.Text>
+
+        <L.Header>
+          <img src={Avatar} alt="" />
+          <span>{}</span>
+        </L.Header>
+
+        <L.LoginForm onSubmit={handleSubmit}>
+          <L.InputContainer $isvisible={inputEmail}>
+            <L.Label htmlFor="email">Email: </L.Label>
+            <L.Input
+              type="email"
+              placeholder="Digite o Email"
+              autoComplete="off"
+              name="email"
+              onChange={(e) => {
                 setEmail(e.target.value);
-                setEmailError(''); // Limpar mensagem de erro ao digitar
+                setEmailError('');
               }}
-        />
-                    {emailError && <p style={{'color': 'red'}}>{emailError}</p>}
-      </L.InputContainer>
+            />
+            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+          </L.InputContainer>
 
-      <L.InputContainer isVisible={inputPassword}>
-        <L.Label htmlFor="password">Password: </L.Label>
-        <L.Input type="password" 
-        placeholder='Digite a Senha'
-        onChange={e => setSenha(e.target.value)}
-        />
-      </L.InputContainer>
+          <L.InputContainer $isvisible={inputPassword}>
+            <L.Label htmlFor="password">Password: </L.Label>
+            <L.Input type="password" name='password' autoComplete="off" placeholder="Digite a Senha" onChange={(e) => setPassword(e.target.value)} />
+          </L.InputContainer>
 
-      <L.Button isVisible={next} onClick={visibleButtonLogin}>NEXT</L.Button>
-      <L.Button type='submit' isVisible={login}>LOGIN</L.Button>
-      
-      <p>Não és um Membro ? <Link to ='/registar'>Cadastrar</Link></p>
-      
-    </L.LoginForm>
+          {emailSent && (
+            <L.Button type="submit" $isvisible={login}>
+              LOGIN
+            </L.Button>
+          )}
 
-    </L.LoginContent>
+          {!emailSent && (
+            <L.Button type='button' $isvisible={!login} onClick={visibleButtonLogin}>
+              NEXT
+            </L.Button>
+          )}
 
-  </L.LoginContainer>
-  )
-}
+          <p>
+            Não és um Membro ? <Link to="/register">Cadastrar</Link>
+          </p>
+        </L.LoginForm>
 
-export default Login
+      </L.LoginContent>
+    </L.LoginContainer>
+  );
+};
+
+export default Login;

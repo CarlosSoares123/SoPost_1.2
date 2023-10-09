@@ -8,14 +8,15 @@ export const RegisterContainer = styled.div`
 `
 
 export const RegisterContent = styled.div`
-  width: 500px;
-  padding-block: 15px;
+  width: 100%;
+  padding: 15px 30px;
   background-color: #fff;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  
 `
 
 export const Text = styled.div`

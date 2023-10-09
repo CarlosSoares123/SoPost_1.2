@@ -1,32 +1,37 @@
 import * as R from './register.ts'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import Avatar from '/login/avatar.svg'
-import { useState, useCallback } from 'react'
-import { useDropzone } from 'react-dropzone';  
+import { useState } from 'react'
 
 const Register: React.FC = () => {
-const [urlImagem, setUrlImagem] = useState<string>(Avatar);
+  
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  })
 
-  const onDrop = useCallback((arquivos) => {
-    // Certifique-se de que há pelo menos um arquivo
-    if (arquivos.length > 0) {
-      const imagem = arquivos[0];
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData, [e.target.name]: e.target.value
+    })
+    
+  } 
 
-      // Usar FileReader para ler o conteúdo da imagem e obter o URL base64
-      const leitor = new FileReader();
-      leitor.onload = () => {
-        const urlDaImagem = leitor.result as string;
-        setUrlImagem(urlDaImagem);
-        console.log('URL da imagem:', urlDaImagem);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
 
-      };
-      leitor.readAsDataURL(imagem);
+    try {
+      const response = await axios.post('http://localhost:9000/register', formData)
+      console.log(response.data)
+      alert('Criado')
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
     }
-  }, []);
-
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
+  }
+  
   return(
     <R.RegisterContainer>
       <R.RegisterContent>
@@ -37,38 +42,40 @@ const [urlImagem, setUrlImagem] = useState<string>(Avatar);
         <p>Estamos felizes em tê-lo conosco.</p>
         </R.Text>
 
-        {/* Input type:file */}
-        <R.Header  {...getRootProps()}>
-          <img src={urlImagem} alt="UserAvatar"/>
-          <input type="file" id="imageInput" className="hidden-input" accept="image/*"  {...getInputProps()} />
-          
+        <R.Header >
+          <img src={Avatar} alt="UserAvatar"/>          
         </R.Header>
 
         {/* Corpo do Formulario em geral */}
-        <R.RegisterForm>
+        <R.RegisterForm onSubmit={handleSubmit}>
           
-          {/* Container dos nomes */}
-          <R.InputsName>
-            <R.InputContainer>
-              <R.Input type="text" 
-              placeholder='Digite seu Nome'/>
-            </R.InputContainer>
-
-            <R.InputContainer>
-              <R.Input type="text" 
-              placeholder='Digite seu Sobrenome'/>
-            </R.InputContainer>
-          </R.InputsName>
-
+          <R.InputContainer>
+            <R.Input 
+            type="text" 
+            name= 'username'
+            value={formData.username}
+            onChange={handleInputChange}
+            placeholder='Digite seu Nome'/>
+          </R.InputContainer>
+            
           {/* Container email */}
           <R.InputContainer>
-            <R.Input type="email" 
+            <R.Input 
+            type="email" 
+            name= 'email'
+            value={formData.email}
+            onChange={handleInputChange}
             placeholder='Digite seu Email' autoComplete='off' />
           </R.InputContainer>
 
           {/* Container password */}
           <R.InputContainer>
-            <R.Input type="password" placeholder='Digite sua Senha'/>
+            <R.Input 
+            type="password" 
+            name= 'password'
+            value={formData.password}
+            onChange={handleInputChange}
+            placeholder='Digite sua Senha'/>
           </R.InputContainer>
           
           <R.Button type='submit'>Registrar</R.Button>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface Props {
-  isVisible: boolean
+  $isvisible: boolean
 }
 
 export const LoginContainer = styled.div`
@@ -60,7 +60,7 @@ export const LoginForm = styled.form`
 export const InputContainer = styled.div<Props>`
   width: 100%;
   height: 100%;
-  display: ${({ isVisible}) => (isVisible) ? 'flex' : 'none'};
+  display: ${({ $isvisible}) => ($isvisible) ? 'flex' : 'none'};
   flex-direction: column;
   gap: 3px;
 `
@@ -79,7 +79,7 @@ export const Button = styled.button<Props>`
   padding: 8px;
   border-radius: 5px;
 
-  display: ${({isVisible}) => (isVisible) ? 'initial' : 'none'};
+  display: ${({$isvisible}) => ($isvisible) ? 'initial' : 'none'};
 
   // variavel
   font-weight: 600;
